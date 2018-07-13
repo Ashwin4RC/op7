@@ -53,6 +53,10 @@ PRODUCT_PACKAGES += \
 	libvulkan \
 	vendor.display.config@1.7
 
+# Doze
+PRODUCT_PACKAGES += \
+    OnePlusDoze
+
 # Fingerprint
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
