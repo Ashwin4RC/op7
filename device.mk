@@ -27,7 +27,8 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_PACKAGES += \
 	audio.a2dp.default \
-	tinymix
+        libaacwrapper \
+	tinymix \
 
 # Audio Policy
 PRODUCT_COPY_FILES += \
@@ -50,7 +51,7 @@ PRODUCT_PACKAGES += \
 # Display
 PRODUCT_PACKAGES += \
 	libvulkan \
-	vendor.display.config@1.0
+	vendor.display.config@1.7
 
 # Fingerprint
 PRODUCT_COPY_FILES += \
@@ -100,8 +101,6 @@ PRODUCT_PACKAGES += \
 	rcs_service_api \
 	rcs_service_api.xml
 
-# Seccomp: TBD
-
 # Telephony
 PRODUCT_PACKAGES += \
 	telephony-ext
@@ -130,8 +129,6 @@ PRODUCT_PACKAGES += \
 # VNDK-SP
 PRODUCT_PACKAGES += \
 	vndk_package
-
-# Wifi Display: TBD
 
 AB_OTA_UPDATER := true
 
@@ -171,3 +168,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	KeyHandler \
 	tri-state-key_daemon
+
+# WiFi Display
+PRODUCT_PACKAGES += \
+    libnl
+
+PRODUCT_BOOT_JARS += \
+    WfdCommon
