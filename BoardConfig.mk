@@ -6,6 +6,7 @@
 
 BOARD_VENDOR := oneplus
 DEVICE_PATH := device/oneplus/guacamole
+PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
 
 # Architecture
 TARGET_ARCH := arm64
