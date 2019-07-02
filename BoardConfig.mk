@@ -158,3 +158,7 @@ BOARD_PLAT_PUBLIC_SEPOLICY_DIR += device/qcom/sepolicy/public
 
 # Vendor Security Patch Level
 VENDOR_SECURITY_PATCH := 2019-05-01
+
+# Fingerprint
+SOONG_CONFIG_NAMESPACES += oneplusMsmnileFodPlugin
+SOONG_CONFIG_oneplusMsmnileFodPlugin := posX posY size
