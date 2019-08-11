@@ -10,7 +10,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 
 # Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/oneplus/guacamole/guacamole-vendor.mk)
+$(call inherit-product-if-exists, vendor/oneplus/guacamoleb/guacamoleb-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -18,7 +18,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 	$(LOCAL_PATH)/overlay-lineage \
 
 PRODUCT_ENFORCE_RRO_TARGETS := \
-    framework-res
+        framework-res
 
 # AID/fs configs
 PRODUCT_PACKAGES += \
@@ -43,9 +43,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-	Snap \
-	vendor.lineage.camera.motor@1.0 \
-	vendor.lineage.camera.motor@1.0-service.oneplus_msmnile \
+	Snap
 
 # Common init scripts
 PRODUCT_PACKAGES += \

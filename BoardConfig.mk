@@ -5,7 +5,7 @@
 #
 
 BOARD_VENDOR := oneplus
-DEVICE_PATH := device/oneplus/guacamole
+DEVICE_PATH := device/oneplus/guacamoleb
 PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
 
 # Architecture
@@ -49,7 +49,7 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 BOARD_KERNEL_IMAGE_NAME := Image-dtb
 TARGET_KERNEL_SOURCE := kernel/oneplus/sm8150
-TARGET_KERNEL_CONFIG := SD_defconfig
+TARGET_KERNEL_CONFIG := vendor/sm8150-perf_defconfig
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_USE_SDCLANG := true
 BOARD_KERNEL_SEPARATED_DTBO := true
