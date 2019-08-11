@@ -17,7 +17,7 @@
 
 set -e
 
-DEVICE=guacamole
+DEVICE=guacamoleb
 VENDOR=oneplus
 
 # Load extract_utils and do some sanity checks
@@ -34,7 +34,7 @@ fi
 source "${HELPER}"
 
 # Default to sanitizing the vendor folder before extraction
-CLEAN_VENDOR=true
+CLEAN_VENDOR=false
 
 SECTION=
 KANG=
@@ -57,10 +57,6 @@ while [ "${#}" -gt 0 ]; do
     esac
     shift
 done
-
-if [ -z "${SRC}" ]; then
-    SRC="adb"
-fi
 
 # Initialize the helper for common device
 setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" true "${CLEAN_VENDOR}"
