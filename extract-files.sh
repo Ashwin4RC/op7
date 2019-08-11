@@ -15,16 +15,14 @@
 # limitations under the License.
 #
 
-set -e
-
 DEVICE=guacamoleb
 VENDOR=oneplus
 
-# Load extract_utils and do some sanity checks
+#Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 
-LINEAGE_ROOT="${MY_DIR}"/../../..
+LINEAGE_ROOT="${MY_DIR}/../../.."
 
 HELPER="${LINEAGE_ROOT}/vendor/lineage/build/tools/extract_utils.sh"
 if [ ! -f "${HELPER}" ]; then
@@ -35,38 +33,29 @@ source "${HELPER}"
 
 # Default to sanitizing the vendor folder before extraction
 CLEAN_VENDOR=false
-
 SECTION=
 KANG=
 
-while [ "${#}" -gt 0 ]; do
-    case "${1}" in
-        -n | --no-cleanup )
-                CLEAN_VENDOR=false
-                ;;
-        -k | --kang )
-                KANG="--kang"
-                ;;
-        -s | --section )
-                SECTION="${2}"; shift
-                CLEAN_VENDOR=false
-                ;;
-        * )
-                SRC="${1}"
-                ;;
+while [ "$1" != "" ]; do
+    case "$1" in
+        -n | --no-cleanup )     CLEAN_VENDOR=false
+                                ;;
+        -k | --kang)            KANG="--kang"
+                                ;;
+        -s | --section )        shift
+                                SECTION="$1"
+                                CLEAN_VENDOR=false
+                                ;;
+        * )                     SRC="$1"
+                                ;;
     esac
     shift
 done
 
-# Initialize the helper for common device
-setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" true "${CLEAN_VENDOR}"
+# Initialize the helper
+setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
 
-extract "${MY_DIR}/proprietary-files.txt" "${SRC}" \
+extract "${MY_DIR}/proprietary-files-vendor.txt" "${SRC_VENDOR}" \
         "${KANG}" --section "${SECTION}"
-
-
-COMMON_BLOB_ROOT="${LINEAGE_ROOT}/vendor/${VENDOR}/${DEVICE}/proprietary"
-
-sed -i "s/android.hidl.base@1.0.so/libhidlbase.so\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/" "${COMMON_BLOB_ROOT}/lib64/libwfdnative.so" "${COMMON_BLOB_ROOT}/lib/libwfdnative.so"
 
 "${MY_DIR}/setup-makefiles.sh"

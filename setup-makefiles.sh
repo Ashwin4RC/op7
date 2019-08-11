@@ -40,9 +40,7 @@ setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" true
 # Copyright headers and guards
 write_headers "guacamoleb"
 
-# The standard common blobs
-write_makefiles "${MY_DIR}/proprietary-files.txt" true
+write_makefiles "${MY_DIR}/proprietary-files-vendor.txt" true
 
 # Finish
 write_footers
-
